@@ -1,4 +1,4 @@
-import Loader, { SmallLoader } from "@/Essentials/Loader";
+import { SmallLoader } from "@/Essentials/Loader";
 import usernameValidation from "@/Queryfunctions/validation/usernameValidation";
 import { useAppDispatch } from "@/app/ReduxHooks";
 import { AuthInsertion } from "@/app/Slices/AuthSlice";

@@ -1,6 +1,5 @@
 import {
   PenBox,
-  Bell,
   Search,
   Settings,
   UserCircle2,
@@ -30,7 +29,6 @@ import { useDebouncedCallback } from "use-debounce";
 import { SearchQuery } from "@/Queryfunctions/Landing/SearchQuery";
 import Cookies from "js-cookie";
 import { CreditsInsertion } from "@/app/Slices/CredentialSlice";
-import searchedInsertion from "@/app/Reducers/SearchedReducer";
 import { SearchedInsert } from "@/app/Slices/SearchedSlice";
 import { toast } from "react-hot-toast";
 const LoginedOptions = () => {

@@ -6,7 +6,7 @@ interface Itopics {
     data: {
         _id:string;
         topic:Itopic,
-        results:number
+        results?:number
     }
 }
 export const TopicBox:FC<Itopics>=({data})=>{

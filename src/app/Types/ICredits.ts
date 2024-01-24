@@ -1,19 +1,6 @@
 import { Iblog, Itopic } from "./Ilanding";
 
-interface IblogShort {
-    title:string;
-    banner:string;
-    likes:number;
-    views:number;
-    subtitle:string;
-    timeToRead:string;
-    publishDate:string;
-    topic:string;
-}
-interface IMemberShort {
-    username:string;
-    avatar:string;
-}
+
 export interface Iinfo{
     _id:string;
     username:string

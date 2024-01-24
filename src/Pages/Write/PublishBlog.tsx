@@ -42,7 +42,7 @@ const PublishBlog = () => {
    localStorage.removeItem("Banner_Post")
    navigate("/")
   },
-onError(error){
+onError(){
   toast.error("Failed to upload , try again later")
 }
 });

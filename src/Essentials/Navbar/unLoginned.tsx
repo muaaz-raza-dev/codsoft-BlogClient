@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
-type Props = {}
 
-const UnLoginned = (props: Props) => {
+
+const UnLoginned = () => {
   return (
     <>
     <ul className="list-none flex gap-x-4 max-sm:hidden">

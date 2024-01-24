@@ -2,7 +2,7 @@ import { Iblog, Ilanding, Itopic } from "@/app/Types/Ilanding";
 import { PayloadAction } from "@reduxjs/toolkit";
 interface IinsertdataPayload {
   Blogs?: Iblog[];
-  Topics?: Itopic[];
+  Topics?: {_id:string,  topic:{_id:string,title:string},result:number}[];
   Trendings?: Iblog[];
   count?: number;
   tabs?: Itopic[];

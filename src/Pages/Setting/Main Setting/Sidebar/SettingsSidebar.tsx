@@ -1,7 +1,7 @@
 import { useAppDispatch } from "@/app/ReduxHooks"
 import { CreditsInsertion } from "@/app/Slices/CredentialSlice"
 import Cookies from "js-cookie"
-import { Bell, LogOut, UserCircle2Icon } from "lucide-react"
+import {LogOut, UserCircle2Icon } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
 
 const SettingsSidebar = () => {

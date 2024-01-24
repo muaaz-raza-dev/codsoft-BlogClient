@@ -10,7 +10,6 @@ const SaveBtn = ({_id}:{_id:string}) => {
     let dispatch=useAppDispatch()
     let {Info} =useAppSelector(state=>state.credits)
     let credits =useAppSelector(state=>state.credits)
-    let data =useAppSelector(state=>state.landing)
     const {mutate}=useMutation({mutationFn:()=>SaveFn(_id) ,mutationKey:[_id,"save"] , onSuccess(resp) {
       if (resp.type=="save") {
           toast.success(resp.msg)

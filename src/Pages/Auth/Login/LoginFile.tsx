@@ -1,4 +1,4 @@
-import Loader, { LightLoader } from "@/Essentials/Loader";
+import  { LightLoader } from "@/Essentials/Loader";
 import Login from "@/Queryfunctions/Auth/Login";
 import { useAppDispatch, useAppSelector } from "@/app/ReduxHooks";
 import { AuthInsertion } from "@/app/Slices/AuthSlice";

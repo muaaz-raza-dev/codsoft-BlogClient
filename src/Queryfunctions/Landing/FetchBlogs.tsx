@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from "@/app/ReduxHooks"
+
 import Axios from "../axios"
-import { insertion } from "@/app/Slices/LandingSlice"
+
 const FetchBlogs = async(count:number,interests:string[]) => {
 
 let response = await Axios.post(`/posts`,{count,insterests:interests||[]})

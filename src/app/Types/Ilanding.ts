@@ -46,9 +46,7 @@ Comments:IComment[],
 export interface Ilanding{
   Blogs:Iblog[];
   Trendings:Iblog[];
-  Topics: {_id:string,
-  topic:{_id:string,title:string}
-  result:number}[];
+  Topics: {_id:string,  topic:{_id:string,title:string},result:number}[];
   count:number;
   tabs:Itopic[];
   selectedTabs:string;
