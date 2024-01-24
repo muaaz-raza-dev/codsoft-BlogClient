@@ -24,9 +24,7 @@ const BlogEditor = () => {
   const EditorRef: any = useRef(null);
   const [Content, setContent] = useState<string>("");
   let debounce = useDebouncedCallback((data:string) => {
-    if (data.trim()!=="") {
-      localStorage.setItem("Blog_Content", data);
-    }
+  
   }, 7500);
   let dispatch = useAppDispatch();
 let data=useAppSelector(state=>state.write)
