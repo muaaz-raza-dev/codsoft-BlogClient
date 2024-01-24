@@ -29,18 +29,24 @@ const PublishBlog = () => {
   let dispatch=useAppDispatch()
   let credits = useAppSelector((state) => state.credits);
   let {Blogs} = useAppSelector((state) => state.landing);
-  const [Anonymous, setAnonymous] = useState<boolean>(false);
   let { mainContent, title, subtitile, Banner, topic ,timeToRead } = writeState;
   let navigate=useNavigate()
-  let {mutate ,isLoading } = useMutation({mutationKey:["upload",credits.Info._id] , mutationFn:()=>{
+  let {mutate ,isLoading } = useMutation({mutationKey:["upload",credits.Info._id] , mutationFn:(Anonymous:boolean)=>{
       return UploadFn({author:credits.Info._id,anonymous:Anonymous,content:mainContent, title,subTitle: subtitile,banner: Banner,timeToRead, topic}) 
   } ,onSuccess(data) {
    let{payload}=data
-   dispatch(insertion({Blogs:[payload,...Blogs]}))
-   dispatch(CreditsInsertion({Posts:[payload,...credits.Info.Posts]}))
+   let Input;
+   if (payload.anonymous) {
+     Input={...payload,author:{}}
+    }else{
+     Input =payload
+    }
+   dispatch(insertion({Blogs:[Input,...Blogs]}))
+   dispatch(CreditsInsertion({Posts:[Input,...credits.Info.Posts]}))
    toast.success("Blog posted successfully")
    localStorage.removeItem("Blog_Content")
    localStorage.removeItem("Banner_Post")
+   backtoDefault()
    navigate("/")
   },
 onError(){
@@ -77,10 +83,10 @@ onError(){
             <DialogDescription>
               <div className="flex flex-wrap w-full my-4 items-center gap-3">
                 <button
-                  onClick={() =>{ setAnonymous(true) 
+                  onClick={() =>{ 
                     
-                  mutate()
-                  backtoDefault()
+                  mutate(true)
+                 
                   }}
                   className="uppercase block w-full p-1 text-lg rounded-full bg-[var(--primary)] hover:bg-[black] text-white transition-colors focus:outline-none"
                 >
@@ -98,9 +104,9 @@ onError(){
                 </button>
               </div>
               <button
-                onClick={() =>{ setAnonymous(false )  
-                mutate()
-                backtoDefault()
+                onClick={() =>{ 
+                mutate(false)
+               
                 }}
                 className=" block w-full p-1 text-lg rounded-full bg-[var(--primary)] hover:bg-[black] text-white transition-colors focus:outline-none"
               >
