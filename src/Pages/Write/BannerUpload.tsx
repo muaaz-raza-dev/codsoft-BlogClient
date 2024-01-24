@@ -5,10 +5,13 @@ import { Upload } from "lucide-react";
 import UploadImage from "@/app/middlewares/functions/ImageUploader";
 import { WriteInsertion } from "@/app/Slices/WriteSlice";
 import { toast } from "react-hot-toast";
-
+import {useEffect} from "react"
 const BannerUploadB = () => {
   const writeState =useAppSelector(state=>state.write)
-const [ImageURI, setImageURI] = useState<{sample:string,blob?:Blob}>({sample:writeState.Banner});
+const [ImageURI, setImageURI] = useState<{sample:string,blob?:Blob|null}>({sample:writeState.Banner});
+useEffect(() => {
+  localStorage.getItem("Banner_Post")&&setImageURI({sample:localStorage.getItem("Banner_Post")||""})
+}, []);
 let fileRef =useRef()
   let dispatch = useAppDispatch()
   return (
@@ -24,30 +27,27 @@ let fileRef =useRef()
         </div>
         </div>
 
-        {
-          !writeState.Banner&&
-          <>
+       
 <FileUploader  multiple={false} ref={fileRef} label="Upload your banner" file={true} handleChange={(file:Blob)=>{
   setImageURI({sample:URL.createObjectURL(file),blob:file})
 }} types={["PNG","JPG","JPEG"]} />
 <div className="flex gap-x-4">
-
 {
-  ImageURI&&
+  ImageURI.blob&&
 <button onClick={()=>{ImageURI.blob&&UploadImage(ImageURI?.blob).then(data=>{
   dispatch(WriteInsertion({Banner:data.url}))
+  setImageURI({...ImageURI,blob:null})
   localStorage.setItem("Banner_Post",data.url) // For draft puropose
   toast.success("Banner uploaded")
 }
 )
 }} className="p-2 w-fit rounded text-md text-white bg-[var(--primary)] flex gap-x-2">
-  Upload
+Upload
   <Upload size={20}/>
 </button>
 }
 </div>
-  </>
-}
+
     </section>
   )
 }

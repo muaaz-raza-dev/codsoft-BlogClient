@@ -16,13 +16,15 @@ import { insertion } from './app/Slices/LandingSlice'
 import{useEffect} from "react"
 import SearchedPageFile from './Pages/Searched/SearchedPageFile'
 import CreditsGuard, { LoginAskModal } from './app/middlewares/CreditsGuard'
+import Loader from './Essentials/Loader'
 const RecordsFile = () => {
   let state=useAppSelector(state=>state.landing)
   let validation = useValidate()
   let Info=useAppSelector(state=>state.credits)
   let dispatch =useAppDispatch()
-  let {mutate}= useMutation({mutationKey:"Topics",
-  onSuccess(data, ) {
+  let {mutate,isLoading}= useMutation({mutationKey:"Topics",
+ onSuccess(data) {
+  
     dispatch(
       insertion({
           count: state?.count + 1,
@@ -34,11 +36,19 @@ const RecordsFile = () => {
   mutationFn:()=>FetchStarter(state.count,Info.Info.interests)
 })
 
-  useEffect(() => {
-    validation.then(()=>{
-mutate()
-    })
+useEffect(() => {
+  validation.then(()=>{
+  mutate()
+      })
   }, []);
+
+  if (isLoading) {
+  return(
+   <div className='w-full h-screen center'>
+<Loader/>
+  </div>)    
+  }
+else {
 
   return (
     <main>
@@ -54,19 +64,16 @@ mutate()
 <Route path='/topic/:topic' element={<SearchedPageFile  />}/>
 <Route path='/search/:q' element={<SearchedPageFile  />}/>
 <Route path='/auth/*' element={<AuthFile />}/>
-<Route path='/write/*' element={<CreditsGuard>
-  <WriteFile />
-  </CreditsGuard>
-  }/>
+<Route path='/write/*' element={<CreditsGuard><WriteFile/></CreditsGuard>}/>
 <Route path='/profile/*' element={
   <CreditsGuard>
 <SettingFile />
   </CreditsGuard>
 }/>
-{/* <Route path='/notifications/*' element={<NotificationFile />}/> */}
         </Routes>
     </main>
   )
+}
 }
 
 export default RecordsFile
