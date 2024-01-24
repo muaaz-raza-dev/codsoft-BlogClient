@@ -30,10 +30,10 @@ const RegisterFile = () => {
         </div>
         <div className="w-full py-6 z-20">
             <h1 className="my-6 text-4xl hFont">
-            Register to Records
+            Register to Blogger
             </h1>
           
-            <form  className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto" onSubmit={(e)=>e.preventDefault()}>
+            <form  className="sm:[75%] w-full px-2 lg:px-0 mx-auto" onSubmit={(e)=>e.preventDefault()}>
       <AvatarUpload/>
                 <div className="pb-2 pt-2">
                     <input type="text" name="Name"  value={data.register.Name} 

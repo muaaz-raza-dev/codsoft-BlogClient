@@ -20,7 +20,7 @@ export const PostBox:FC<IblogProp> = ({data})=>{
     <>
     <section className="flex w-full py-2 px-4 justify-between flex-col  ">
 <Link to={`/user/${data.author._id?data.author._id:""}`} className="flex items-center   gap-x-0.5">
-  <Avatar className="p-2 ">
+  <Avatar className="p-2 z-20">
     <AvatarImage src={data?.author?.avatar||"/images/anonymous.png"} className="z-10  aspect-square rounded-full"/>
   </Avatar>
 <Link preventScrollReset to={`/user/${data.author._id?data.author._id:""}`}>{data?.author?.username||"Anonymous"}</Link>
@@ -32,7 +32,7 @@ export const PostBox:FC<IblogProp> = ({data})=>{
   <section  className="flex flex-col w-[75%] justify-between">
     <Link to={`/blog/${data?._id}`} className="cursor-default">
 <h1  className="BFont text-2xl">{data?.title}</h1>
-    <p className="text-[.9rem]">{data?.subTitle} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo perferendis minima assumenda sit odio mollitia odit, earum alias omnis deleniti blanditiis. Maxime velit voluptas aspernatur et odio debitis ut libero. </p>
+    <p className="text-[.9rem]">{data?.subTitle} </p>
     </Link>
 <section className="flex gap-x-4 items-center justify-between w-full">
       <div className=" flex gap-x-2 items-center ">
@@ -77,7 +77,7 @@ export const LpMainContent = () => {
 <SmallLoader/>
 
       }
-      endMessage={<h1 className="text-md font-bold py-6 text-center">You all caught up! Thanks for scrolling through Records; stay tuned for more, as your curiosity is our fuel!
+      endMessage={<h1 className="text-md font-bold py-6 text-center">You all caught up!
       </h1>}
       >
 {

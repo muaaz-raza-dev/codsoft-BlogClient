@@ -23,7 +23,7 @@ return (
 export const LpHeaderFile = () => {
   let data=useAppSelector(state=>state.landing)
   return (
-    <section className="overflow-auto  flex gap-x-8 bg-[var(--bg)] z-70  w-screen Headerlp  border-b items-center sticky -top-1 h-14 " >
+    <section className="overflow-auto  flex gap-x-8 bg-[var(--bg)] z-[40]  w-screen Headerlp  border-b items-center sticky -top-1 h-14 " >
         <a href="#" className="p-1   rounded cursor-pointer 
         hover:text-[var(--primary)]">
 <Home className="max-md:w-6 md:w-6 ml-4" size={28} />

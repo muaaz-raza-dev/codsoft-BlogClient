@@ -37,10 +37,10 @@ const LoginedOptions = () => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className="h-full overflow-hidden ring-0 focus-visible:ring-0 object-center md:py-1 max-md:py-3 ">
-          <img src={info.Info.avatar? info?.Info?.avatar:"/images/muaaz.png"} className="aspect-square rounded-full h-full border border-black" />
+        <DropdownMenuTrigger className="h-full overflow-hidden  focus-visible:ring-0 object-center md:py-1 max-md:py-3 focus-within:ring-0 outline-0 active:ring-0 ring-0">
+          <img src={info.Info.avatar? info?.Info?.avatar:"/images/muaaz.png"} className="aspect-square rounded-full h-[90%] border border-black" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="mx-2">
+        <DropdownMenuContent className="mx-2 z-[600]">
           <DropdownMenuItem className="cursor-pointer">
             <Link to={`/user/${info.Info._id}`} className="flex gap-x-2 items-center">
               <UserCircle2 size={16} />
@@ -95,7 +95,7 @@ const Logined = () => {
     <>
       <ul className="list-none flex gap-x-5  ">
         <Link to={"/write"} className="text-gray-600 hover:text-black transition-colors cursor-pointer font-normal flex items-center gap-x-1 max-sm:hidden">
-          <PenBox size={20} />{" "}
+          <PenBox size={25} />{" "}
         </Link>
     
       </ul>

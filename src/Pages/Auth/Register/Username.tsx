@@ -36,7 +36,8 @@ const Username = () => {
     <div className="pb-2 pt-2 w-full relative">
         <div className="absolute right-4 top-[40%]">
             {state.loading===true?
-<SmallLoader/>:
+            username!==""?
+<SmallLoader/>:"":
 state.success?
 <Verified className="text-green-500"/>:<Ban  className="text-red-500"/>
 

@@ -8,7 +8,7 @@ interface ITrendingProp {
   data:Iblog;
   }
 export const ShortCard:FC<ITrendingProp> = ({data})=>{
-  return(<div className="md:w-[33%] max-md:w-full flex flex-col border-b md:border-r py-2">
+  return(<div className="w-full flex flex-col border-b md:border-r py-2">
     <Link to={`/user/${data.author._id}`} className="flex items-center  gap-x-0.5">
   <Avatar className="p-2">
     <AvatarImage src={data?.author?.avatar||"/images/muaaz.png"} className="-z-10 w-full aspect-square rounded-full"/>

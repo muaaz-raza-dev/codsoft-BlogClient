@@ -21,6 +21,8 @@ const LoginFile = () => {
         Cookies.set("Records_session",data.token,{expires: new Date(Date.now() + 2.628e9)})
         dispatch(CreditsInsertion({isLogined:true,Info:{...Credits.Info,...data.payload}}))
         dispatch(insertion({tabs:data.interests}))
+        console.log(data);
+        
         navigate("/")
       }
       else{
@@ -53,7 +55,7 @@ function inputHandler(purpose:string,e:ChangeEvent<HTMLInputElement>) {
           <div className="absolute opacity-60 inset-0 z-0"></div>
         </div>
         <div className="w-full py-6 z-20">
-          <h1 className="my-6 text-4xl hFont">Login to Records</h1>
+          <h1 className="my-6 text-4xl hFont">Login to Blogger</h1>
 
           <form onSubmit={(e)=>{
             e.preventDefault()

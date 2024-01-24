@@ -29,7 +29,7 @@ if (File.file) {
   return (
       <div className={`pb-2 pt-4  w-full p-2 px-6 text-lg rounded border-[var(--secondary)] border-2 focus:border-black flex items-center justify-between ${File.loading===true&&"animate-pulse"}`}>
                 <Avatar className="w-20 h-20 aspect-sqaure text-xs bg-gray-200 flex items-center justify-center text-white tracking-tighter border-gray-700 border-2 ">
-                    <AvatarImage src={File.uri||"/images/user.png"}  />
+                    <AvatarImage src={File.uri||"/images/anonymous.png"}  />
                     {/* <p>Profile picture</p> */}
                     </Avatar>
                     <div className="flex gap-x-3">

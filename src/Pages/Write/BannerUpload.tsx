@@ -37,7 +37,7 @@ let fileRef =useRef()
 <button onClick={()=>{ImageURI.blob&&UploadImage(ImageURI?.blob).then(data=>{
   dispatch(WriteInsertion({Banner:data.url}))
   localStorage.setItem("Banner_Post",data.url) // For draft puropose
-toast.success("Banner uploaded")
+  toast.success("Banner uploaded")
 }
 )
 }} className="p-2 w-fit rounded text-md text-white bg-[var(--primary)] flex gap-x-2">
