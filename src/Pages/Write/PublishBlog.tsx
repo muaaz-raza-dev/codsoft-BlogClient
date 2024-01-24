@@ -23,12 +23,13 @@ import { CreditsInsertion } from "@/app/Slices/CredentialSlice";
 import { insertion } from "@/app/Slices/LandingSlice";
 import { LightLoader } from "@/Essentials/Loader";
 import { useNavigate } from "react-router-dom";
+import { WriteInsertion } from "@/app/Slices/WriteSlice";
 const PublishBlog = () => {
   let writeState = useAppSelector((state) => state.write);
   let dispatch=useAppDispatch()
   let credits = useAppSelector((state) => state.credits);
   let {Blogs} = useAppSelector((state) => state.landing);
-  const [Anonymous, setAnonymous] = useState<Boolean>(false);
+  const [Anonymous, setAnonymous] = useState<boolean>(false);
   let { mainContent, title, subtitile, Banner, topic ,timeToRead } = writeState;
   let navigate=useNavigate()
   let {mutate ,isLoading } = useMutation({mutationKey:["upload",credits.Info._id] , mutationFn:()=>{
@@ -54,6 +55,11 @@ onError(){
     } else {
     }
   };
+  let backtoDefault=()=>{
+    dispatch(WriteInsertion({mainContent:"",title:"",timeToRead:"" ,Banner:"",subtitile:"",topic:""}))
+    localStorage.removeItem("Banner_Post")
+
+  }
   return (
     <>
       <Dialog>
@@ -72,7 +78,9 @@ onError(){
               <div className="flex flex-wrap w-full my-4 items-center gap-3">
                 <button
                   onClick={() =>{ setAnonymous(true) 
+                    
                   mutate()
+                  backtoDefault()
                   }}
                   className="uppercase block w-full p-1 text-lg rounded-full bg-[var(--primary)] hover:bg-[black] text-white transition-colors focus:outline-none"
                 >
@@ -92,6 +100,7 @@ onError(){
               <button
                 onClick={() =>{ setAnonymous(false )  
                 mutate()
+                backtoDefault()
                 }}
                 className=" block w-full p-1 text-lg rounded-full bg-[var(--primary)] hover:bg-[black] text-white transition-colors focus:outline-none"
               >
