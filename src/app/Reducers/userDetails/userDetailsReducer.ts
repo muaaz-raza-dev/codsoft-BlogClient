@@ -1,10 +1,11 @@
+import { Iinfo } from "@/app/Types/ICredits";
 import { Iblog, } from "@/app/Types/Ilanding";
-import { Iuser, IuserDetails } from "@/app/Types/IuserDetails";
+import {  IuserDetails } from "@/app/Types/IuserDetails";
 import { PayloadAction } from "@reduxjs/toolkit/react";
 interface IuserDAction{
-    Info?: Iuser;
-    Follower?: string [];
-    Following?: string[];
+    Info?: Iinfo;
+    Follower?: Iinfo[];
+    Following?: Iinfo[];
     Posts?: Iblog[];
     isAdmin?:boolean;
     selectedTab?:string

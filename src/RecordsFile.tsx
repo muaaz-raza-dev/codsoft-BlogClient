@@ -22,7 +22,7 @@ const RecordsFile = () => {
   let validation = useValidate()
   let Info=useAppSelector(state=>state.credits)
   let dispatch =useAppDispatch()
-  let {mutate,isLoading,data}= useMutation({mutationKey:"Topics",
+  let {mutate,isLoading,isSuccess}= useMutation({mutationKey:"Topics",
  onSuccess(data) {
   
     dispatch(
@@ -42,7 +42,7 @@ useEffect(() => {
       })
   }, []);
 
-  if (data&&isLoading) {
+  if (isLoading&&isSuccess) {
   return(
    <div className='w-full h-screen center'>
 <Loader/>

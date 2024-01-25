@@ -11,7 +11,7 @@ const PuserInfoFile:FC = () => {
   let credits = useAppSelector(state=>state.credits)
   return (
     <section className="md:w-[85%] max-md:w-[92%] flex flex-col items-center justify-center mt-8 gap-y-8">
-        <section className="lg:w-[75%] max-lg:w-[85%] max-md:w-[85%] max-sm:w-[100%] flex justify-between max-md:flex-col items-center gap-y-4 ">
+        <section className="lg:w-[75%] max-lg:w-[85%] max-md:w-[95%] max-sm:w-[100%] flex justify-between max-md:flex-col items-center gap-y-4 ">
 <div className="w-1/2 flex justify-center ">
 <div className=" w-48 aspect-square rounded-full bg-gray-400">
 <img src={userState.Info.avatar||"/images/muaaz.png"} alt="profile picture" className="w-full aspect-square rounded-full" />
@@ -31,7 +31,7 @@ const PuserInfoFile:FC = () => {
   }
   </Button>
         </div>
-        <div className="flex max-md:w-[75%] md:w-[80%] justify-between">
+        <div className="flex max-md:w-[95%] md:w-[80%] justify-between">
     <b>{userState.Posts.length} blogs   </b>
     <b>{userState.Follower.length} Followers</b>
     <b>{userState.Following.length} Following</b>

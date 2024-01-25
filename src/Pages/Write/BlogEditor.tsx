@@ -42,7 +42,7 @@ let data=useAppSelector(state=>state.write)
     <ReactQuill
       theme="snow"
       modules={modules}
-      className="w-[90%] bg-[#f7f6f6] border-none h-[50vh] mb-6"
+      className="w-[90%] bg-[#f7f6f6] border-none md:h-[50vh]   mb-6"
       ref={EditorRef}
       placeholder="Share your information or thoughts through Records "
       defaultValue={data.mainContent || ""}

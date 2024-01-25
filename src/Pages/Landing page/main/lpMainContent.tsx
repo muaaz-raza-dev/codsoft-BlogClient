@@ -19,20 +19,24 @@ export const PostBox:FC<IblogProp> = ({data})=>{
   return(
     <>
     <section className="flex w-full py-2 px-4 justify-between flex-col  ">
-<Link to={`/user/${data.author._id?data.author._id:""}`} className="flex items-center   gap-x-0.5">
-  <Avatar className="p-2 z-20">
+<Link to={`/user/${data?.author?._id?data?.author?._id:""}`} className="flex items-center   gap-x-0.5">
+  <Avatar className="p-2 z-20 h-full">
     <AvatarImage src={data?.author?.avatar||"/images/anonymous.png"} className="z-10  aspect-square rounded-full"/>
   </Avatar>
-<Link preventScrollReset to={`/user/${data.author._id?data.author._id:""}`}>{data?.author?.username||"Anonymous"}</Link>
+<Link preventScrollReset to={data?.author?._id?`/user/${data?.author._id}`:`/blog/${data?._id}`}>{data?.author?.username||"Anonymous"}</Link>
 <Dot/>
 <p>{new Date(data?.publishDate).toLocaleDateString()}</p>
 </Link>
 
-<main className="flex w-full ">
+<main className="flex w-full h-full">
   <section  className="flex flex-col w-[75%] justify-between">
     <Link to={`/blog/${data?._id}`} className="cursor-default">
 <h1  className="BFont text-2xl">{data?.title}</h1>
-    <p className="text-[.9rem]">{data?.subTitle} </p>
+    <p className="text-[.9rem] text-gray-700">{data?.subTitle} </p>
+    {
+      !data.subTitle&&
+<p className="whitespace-pre-wrap" dangerouslySetInnerHTML={{__html:data.content.slice(1,20)}}></p>
+    }
     </Link>
 <section className="flex gap-x-4 items-center justify-between w-full">
       <div className=" flex gap-x-2 items-center ">
@@ -47,8 +51,8 @@ export const PostBox:FC<IblogProp> = ({data})=>{
 </section>
 </section>
 
-  <div className="w-[20%] flex overflow-hidden justify-end aspect-square     p-2   ">
-<img src={data?.banner||"/images/Records.png"} alt="" className="w-full object-contain " />
+  <div className="w-[18%] rounded flex overflow-hidden justify-end aspect-square     p-2   h-full">
+<img src={data?.banner||"/images/Records.png"} alt="" className="w-full object-contain rounded " />
   </div>
 </main>
 
@@ -66,7 +70,7 @@ export const LpMainContent = () => {
   return (
     <div className="flex flex-col w-full gap-y-3  ">
       <InfiniteScroll 
-      className="overflow-hidden overflow-x-hidden "
+      className="overflow-hidden overflow-x-hidden ZeroScroll "
       dataLength={Data.Blogs.length}
       next={()=>{if (Data.Blogs.length!==0) {
         FetchBlogs<typeof dispatch >(Data,dispatch,Credits)}

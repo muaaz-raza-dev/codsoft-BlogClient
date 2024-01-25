@@ -8,8 +8,8 @@ interface IpaylaodCredits {
     Posts?:Iblog[];    
     liked?:string[];
     saved?:Iblog[];
-    followers?:string[]
-    following?:string[]
+    followers?:Iinfo[]
+    following?:Iinfo[]
     username?:string
     avatar?:string,
     email?:string,

@@ -30,7 +30,7 @@ dispatch(WriteInsertion({[e.target.name]:e.target.value}))
       <Input placeholder="Topic i.e Programming or Entertaiment" name="topic" className=" outline-none  focus-visible:ring-0 border border-black my-2 text-xs " onChange={(e)=>InputHandler(e)} value={writeState.topic}/>
     
       </div>
-      <div className="text-center center float-end flex gap-x-2 bg-[var(--primary)] max-md:w-[25%] md:w-[15%] p-2 my-2 rounded text-white">
+      <div className="text-center center float-end flex gap-x-2 bg-[var(--primary)] max-md:w-[25%] md:w-[15%] max-sm:w-[45%] p-2 my-2 rounded text-white">
         {writeState.timeToRead}  </div>
         </div>
     </div>

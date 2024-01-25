@@ -16,7 +16,7 @@ let fileRef =useRef()
   let dispatch = useAppDispatch()
   return (
     <section className="w-full flex flex-col items-center gap-y-4">
-        <div className="w-[70%]  ">
+        <div className="max-md:w-[90%] md:w-[75%]  ">
 <div className={`${!ImageURI.sample&&"bg-gray-500"} border-2 p-2 object-contain w-full flex items-center justify-center text-white  `}>
             {
               !ImageURI.sample?
@@ -26,11 +26,11 @@ let fileRef =useRef()
             }
         </div>
         </div>
-
-       
-<FileUploader  multiple={false} ref={fileRef} label="Upload your banner" file={true} handleChange={(file:Blob)=>{
+<div className="max-md:w-full p-2 overflow-hidden">
+<FileUploader className={"w-full"}  multiple={false} ref={fileRef} label="Upload your banner" file={true} handleChange={(file:Blob)=>{
   setImageURI({sample:URL.createObjectURL(file),blob:file})
-}} types={["PNG","JPG","JPEG"]} />
+}} types={["PNG","JPG","JPEG"]}  />
+</div>
 <div className="flex gap-x-4">
 {
   ImageURI.blob&&

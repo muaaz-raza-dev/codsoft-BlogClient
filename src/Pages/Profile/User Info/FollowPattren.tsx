@@ -1,4 +1,4 @@
-import FollowFn, { unFollowFn } from "@/Queryfunctions/Posts/FollowUnfollow"
+import FollowFn from "@/Queryfunctions/Posts/FollowUnfollow"
 import { useAppDispatch, useAppSelector } from "@/app/ReduxHooks"
 import { CreditsInsertion } from "@/app/Slices/CredentialSlice"
 import { userDetailsInsertion } from "@/app/Slices/UserDetailsSilce"
@@ -11,31 +11,25 @@ const FollowPattren = () => {
     let dispatch=useAppDispatch()
     let {Info} =useAppSelector(state=>state.credits)
     let credits =useAppSelector(state=>state.credits)
-    const {mutate}=useMutation({mutationFn:()=>{
-        if (Info.following.includes(data.Info._id)) {
-     return  unFollowFn(data.Info._id)   
+    const {mutate}=useMutation({mutationFn:()=>FollowFn(data.Info?._id)
+       ,mutationKey:[data.Info?._id,"save"] , onSuccess(resp) {
+      if (resp.type=="follow") {
+          toast.success(`You are following ${data.Info.username}`)
+          dispatch(userDetailsInsertion({Follower:[...data.Follower,Info]}))
+          dispatch(CreditsInsertion({following:[...Info.following,data.Info]}))
         }
         else{
 
-          return  FollowFn(data.Info?._id)
-        }
-    
-    } ,mutationKey:[data.Info?._id,"save"] , onSuccess(resp) {
-      if (resp.type=="follow") {
-          toast.success(`You are following ${data.Info.username}`)
-          dispatch(userDetailsInsertion({Follower:[...data.Follower,Info._id]}))
-          dispatch(CreditsInsertion({following:[...Info.following,data.Info._id]}))
-        }
-        else{
-            dispatch(userDetailsInsertion({Follower:data.Follower.filter(elm=>elm!==Info._id)}))
-          dispatch(CreditsInsertion({following:Info.followers.filter(elm=>elm!==data.Info._id)}))
+            dispatch(userDetailsInsertion({Follower:data.Follower.filter(elm=>elm._id!==Info._id)}))
+          dispatch(CreditsInsertion({following:Info.followers.filter(elm=>elm._id!==data.Info._id)}))
         }
 
     },})
+
     
   return (
     <div className='w-full h-full  ' onClick={()=>{CreditsValidator<typeof mutate,typeof dispatch>(credits,mutate,dispatch)}}>
-{(Info.following.includes(data.Info._id))? "Unfollow":"Follow"}
+{(Info.following.some(elm=>elm._id==data.Info._id))? "Unfollow":"Follow"}
     </div>
   )
 }

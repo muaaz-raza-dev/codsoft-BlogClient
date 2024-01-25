@@ -6,13 +6,14 @@ import { useParams } from "react-router-dom"
 import SearchTopicFn, { SearchFn } from "@/Queryfunctions/Posts/SearchTopic"
 import { useAppDispatch, useAppSelector } from "@/app/ReduxHooks"
 import { SearchedInsert } from "@/app/Slices/SearchedSlice"
+import Loader from "@/Essentials/Loader"
 
 
 const SearchedPageFile = () => {
   let searchParams=useParams()
 let searchedState = useAppSelector(state=>state.searched)
 let dispatch = useAppDispatch()
-useQuery({queryKey:["Topic",searchParams?.topic||searchParams?.q,],staleTime:1000*60 ,queryFn:()=>{
+let {isLoading}=useQuery({queryKey:["Topic",searchParams?.topic||searchParams?.q,],staleTime:1000*60 ,queryFn:()=>{
   if (searchParams.topic) {
     dispatch(SearchedInsert({count:0}))
     return SearchTopicFn(searchParams?.topic||"",searchedState.count)
@@ -30,6 +31,14 @@ onSuccess(data) {
   }
 },
 })
+if (isLoading) {
+  return(
+    <div className='w-full h-screen center'>
+ <Loader/>
+   </div>) 
+}
+else{
+
   return (
     <div className="w-full h-full px-4 ">
      <TPHeader/>
@@ -37,6 +46,7 @@ onSuccess(data) {
      <TPMain/>
     </div>
   )
+}
 }
 
 export default SearchedPageFile

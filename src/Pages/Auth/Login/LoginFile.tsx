@@ -29,6 +29,8 @@ const LoginFile = () => {
         toast.error(data.msg)
 
       }
+  } ,onError(){
+    toast.error("Invalid credentials")
   }})
 function inputHandler(purpose:string,e:ChangeEvent<HTMLInputElement>) {
         dispatch(AuthInsertion({purpose,[e.target.name]:e.target.value}))
@@ -51,9 +53,7 @@ function inputHandler(purpose:string,e:ChangeEvent<HTMLInputElement>) {
         </div>
       </div>
       <div className="lg:w-1/2 bg-[var(--bg)] text-black w-full flex items-center justify-center text-center md:px-16 px-0 z-0">
-        <div className="absolute lg:hidden z-10 inset-0 bg-no-repeat bg-cover items-center">
-          <div className="absolute opacity-60 inset-0 z-0"></div>
-        </div>
+      
         <div className="w-full py-6 z-20">
           <h1 className="my-6 text-4xl hFont">Login to Blogger</h1>
 

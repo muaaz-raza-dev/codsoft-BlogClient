@@ -1,3 +1,4 @@
+import { Iinfo } from "./ICredits";
 import { Iblog } from "./Ilanding";
 
 export interface Iuser{
@@ -6,9 +7,9 @@ export interface Iuser{
 
 }
 export interface IuserDetails{
-Info:Iuser
-Follower:string[]
-Following:string[]
+Info:Iinfo
+Follower:Iinfo[]
+Following:Iinfo[]
 Posts:Iblog[],
 isAdmin:boolean,
 tabs:string[],
