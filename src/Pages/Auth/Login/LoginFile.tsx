@@ -20,9 +20,7 @@ const LoginFile = () => {
         toast.success("Logined to your account")
         Cookies.set("Records_session",data.token,{expires: new Date(Date.now() + 2.628e9)})
         dispatch(CreditsInsertion({isLogined:true,Info:{...Credits.Info,...data.payload}}))
-        dispatch(insertion({tabs:data.interests}))
-        console.log(data);
-        
+        dispatch(insertion({tabs:data.payload.interests}))
         navigate("/")
       }
       else{

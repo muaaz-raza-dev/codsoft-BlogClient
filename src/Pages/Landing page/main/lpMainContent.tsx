@@ -32,7 +32,7 @@ export const PostBox:FC<IblogProp> = ({data})=>{
   <section  className="flex flex-col px-2 md:w-[75%] max-md:w-full justify-between">
     <Link to={`/blog/${data?._id}`} className="cursor-default">
 <h1  className="BFont md:text-2xl max-md:text-xl">{data?.title}</h1>
-    <p className="md:text-[.9rem] max-md:text-[.7rem] text-gray-700">{data?.subTitle} </p>
+    <p className="md:text-[.9rem] max-md:text-[.7rem] text-gray-700">{data?.subTitle?.split(" ").slice(1,40).join(" ")}... </p>
     {
       !data.subTitle&&
 <p className="whitespace-pre-wrap" dangerouslySetInnerHTML={{__html:data.content.slice(1,20)}}></p>

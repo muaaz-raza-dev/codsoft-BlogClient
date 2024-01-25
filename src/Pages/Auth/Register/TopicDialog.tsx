@@ -15,6 +15,7 @@ import { toast } from "react-hot-toast"
 import  Cookies from "js-cookie"
 import { useNavigate } from "react-router-dom"
 import { LightLoader } from "@/Essentials/Loader"
+import { insertion } from "@/app/Slices/LandingSlice"
   interface TopicDialog {
     title:string,
     loading:boolean,
@@ -33,6 +34,7 @@ const TopicDialog:FC<TopicDialog> = ({title,loading}) => {
           toast.success("Logined to your account")
           Cookies.set("Records_session",data.token,{expires:1.296e+9})
           dispatch(CreditsInsertion({isLogined:true,Info:{...Credits.Info,...data.payload}}))
+          dispatch(insertion({tabs:data.payload.interests}))
           navigate("/")
         }
         else{

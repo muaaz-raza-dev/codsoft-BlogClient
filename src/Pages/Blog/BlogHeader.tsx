@@ -65,7 +65,7 @@ const BlogHeader = ({data}:(Iblog|any)) => {
               size={20}
               className="text-[#6B6B6B] hover:text-black transition cursor-pointer"
             /> */}
-            <div className="" onClick={() => Webshare()}>
+            <div className="" onClick={() => Webshare(data?.title,location.href,data?.subTitle)}>
               <LucideShare
                 size={20}
                 className="text-[#6B6B6B] hover:text-black transition cursor-pointer"
