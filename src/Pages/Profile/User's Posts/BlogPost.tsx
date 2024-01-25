@@ -6,12 +6,12 @@ import TimeAgo from "javascript-time-ago";
 import en from 'javascript-time-ago/locale/en'
 export const BlogPost = ({data}:Iblog|any) => {
   TimeAgo.addDefaultLocale(en)
-console.log(data.topic);
+
     
   const timeAgo = new TimeAgo('en-US')
   
   return (
-    <main  className="flex flex-col  lg:w-[40%] border max-lg:w-[35%] max-md:w-[95%]  md:h-[24rem] max-md:h-[27rem] border-b p-2  px-5 ">
+    <main  className="flex flex-col  lg:w-[40%] border max-lg:w-[35%] max-md:w-[95%]  md:h-[24rem] max-md:h-[27rem] border-b   px-5 ">
 
         <Link to={`/blog/${data._id}`} className="flex justify-center object-fill h-48 bg-gray-300 w-full  border-b  p-2">
 <img src={data?.banner||"/images/Records.png"} alt="" className="h-full aspect-square"/>

@@ -15,7 +15,7 @@ const LikeBtn:FC<Ilikebtn> = ({_id,size}) => {
   let dispatch=useAppDispatch()
     let Info =useAppSelector(state=>state.credits)
     let data =useAppSelector(state=>state.landing)
-    const {mutate}=useMutation({mutationFn:()=>LikeFn(_id,Info.Info._id) ,mutationKey:[_id,"Like"] , onSuccess(resp) {
+    const {mutate,isLoading}=useMutation({mutationFn:()=>LikeFn(_id,Info.Info._id) ,mutationKey:[_id,"Like"] , onSuccess(resp) {
       if (resp.type ==="like") {
         dispatch(CreditsInsertion({liked:[...Info.Info.liked,_id]}))
         dispatch(insertion({Blogs:data.Blogs.map((elm:Iblog)=>{
@@ -39,7 +39,7 @@ const LikeBtn:FC<Ilikebtn> = ({_id,size}) => {
     },})
   return (
     <button onClick={()=>CreditsValidator<typeof mutate,typeof dispatch>(Info,mutate,dispatch)} className='active:scale-110 transition-transform'> 
-    <Heart size={size} fill={Info.Info.liked.includes(_id)? "#FF3040":"transparent"}   className={`${"text-black"}  hover:text-[var(--primary)] p-0.5 cursor-pointer `} />
+    <Heart size={size} fill={ isLoading?"#23232379": Info.Info.liked.includes(_id)? "#FF3040":"transparent"}   className={`${"text-black"} ${isLoading&&"animate-pulse"}  hover:text-[var(--primary)] p-0.5 cursor-pointer max-md:w-6`} />
     </button>
   )
 }

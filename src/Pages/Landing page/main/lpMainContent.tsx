@@ -18,7 +18,7 @@ export const PostBox:FC<IblogProp> = ({data})=>{
   
   return(
     <>
-    <section className="flex w-full py-2 px-4 justify-between flex-col  ">
+    <section className="flex  w-full py-2 md:px-4 max-md:px-2 justify-between flex-col  ">
 <Link to={`/user/${data?.author?._id?data?.author?._id:""}`} className="flex items-center   gap-x-0.5">
   <Avatar className="p-2 z-20 h-full">
     <AvatarImage src={data?.author?.avatar||"/images/anonymous.png"} className="z-10  aspect-square rounded-full"/>
@@ -28,11 +28,11 @@ export const PostBox:FC<IblogProp> = ({data})=>{
 <p>{new Date(data?.publishDate).toLocaleDateString()}</p>
 </Link>
 
-<main className="flex w-full h-full">
-  <section  className="flex flex-col w-[75%] justify-between">
+<main className="flex w-full h-full max-md:items-center max-md:flex-col-reverse ">
+  <section  className="flex flex-col px-2 md:w-[75%] max-md:w-full justify-between">
     <Link to={`/blog/${data?._id}`} className="cursor-default">
-<h1  className="BFont text-2xl">{data?.title}</h1>
-    <p className="text-[.9rem] text-gray-700">{data?.subTitle} </p>
+<h1  className="BFont md:text-2xl max-md:text-xl">{data?.title}</h1>
+    <p className="md:text-[.9rem] max-md:text-[.7rem] text-gray-700">{data?.subTitle} </p>
     {
       !data.subTitle&&
 <p className="whitespace-pre-wrap" dangerouslySetInnerHTML={{__html:data.content.slice(1,20)}}></p>
@@ -42,7 +42,7 @@ export const PostBox:FC<IblogProp> = ({data})=>{
       <div className=" flex gap-x-2 items-center ">
 <div className=" px-2 py-0.5 bg-gray-200 rounded-md text-sm">{data.topic?.title}</div>
   <p className="text-gray-800 text-sm">{data.timeToRead}</p>
-  <p className="text-gray-800 text-sm flex items-center gap-x-2">{data.likes} <Heart size={16}/></p>
+  <p className="text-gray-800 text-sm flex items-center gap-x-1">{data.likes} <Heart className="max-md:w-6" size={12}/></p>
       </div>
 <section className="flex gap-x-4">
 <SaveBtn _id={data._id}/>
@@ -51,7 +51,7 @@ export const PostBox:FC<IblogProp> = ({data})=>{
 </section>
 </section>
 
-  <div className="w-[18%] rounded flex overflow-hidden justify-end aspect-square     p-2   h-full">
+  <div className="md:w-[18%] max-md:w-[55%] center rounded flex overflow-hidden  justify-end aspect-square  h-full mx-2">
 <img src={data?.banner||"/images/Records.png"} alt="" className="w-full object-contain rounded " />
   </div>
 </main>

@@ -10,7 +10,7 @@ const SaveBtn = ({_id}:{_id:string}) => {
     let dispatch=useAppDispatch()
     let {Info} =useAppSelector(state=>state.credits)
     let credits =useAppSelector(state=>state.credits)
-    const {mutate}=useMutation({mutationFn:()=>SaveFn(_id) ,mutationKey:[_id,"save"] , onSuccess(resp) {
+    const {mutate,isLoading}=useMutation({mutationFn:()=>SaveFn(_id) ,mutationKey:[_id,"save"] , onSuccess(resp) {
       if (resp.type=="save") {
           toast.success(resp.msg)
         }
@@ -20,7 +20,7 @@ const SaveBtn = ({_id}:{_id:string}) => {
     
   return (
 
-<Bookmark fill={Info.saved.length!==0? Info?.saved?.filter(elm=>elm?._id===_id).length!==0?"black":"transparent":"transparent"} className="text-black hover:text-[var(--primary)] p-0.5 cursor-pointer" onClick={()=>{CreditsValidator<typeof mutate,typeof dispatch>(credits,mutate,dispatch)}} />
+<Bookmark fill={Info.saved.length!==0? Info?.saved?.filter(elm=>elm?._id===_id).length!==0?"black":"transparent":"transparent"} className={`text-black max-md:w-6 hover:text-[var(--primary)] p-0.5 ${isLoading&&"animate-pulse"}  cursor-pointer`} onClick={()=>{CreditsValidator<typeof mutate,typeof dispatch>(credits,mutate,dispatch)}} />
       
 
   )
