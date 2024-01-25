@@ -40,7 +40,7 @@ export const BlogPost = ({data}:Iblog|any) => {
 </div>
   </div>
   
-  <BlogOptions>
+  <BlogOptions id={data?._id}>
      <div className=" rotate-90 text-xl">...</div>
   </BlogOptions>
 </div>

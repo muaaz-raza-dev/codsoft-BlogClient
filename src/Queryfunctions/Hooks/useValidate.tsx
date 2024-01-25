@@ -9,14 +9,10 @@ const useValidate = async() => {
     let dispatch=useAppDispatch()
     let data=useAppSelector(state=>state.credits)
     if (!data.isLogined) {
-        
         if (token) {
             let response =await Axios.post("/auth/verify",{token})
-            if (response.data.success===true) {
                 dispatch(CreditsInsertion({Info:response.data.payload,isLogined:true}))
                 dispatch(insertion({tabs:response.data.payload.interests}))
-                
-        }
     }
 }
     else{

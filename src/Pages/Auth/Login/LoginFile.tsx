@@ -25,7 +25,6 @@ const LoginFile = () => {
       }
       else{
         toast.error(data.msg)
-
       }
   } ,onError(){
     toast.error("Invalid credentials")
