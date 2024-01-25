@@ -57,7 +57,12 @@ onError(){
     if (mainContent.length == 0 || title.length == 0 || topic.length == 0) {
       toast.error("Main Content, Title and Topic can't be empty ");
       DialogRef?.current?.click();
-    } else {
+    }
+    else if(Banner.length==0){
+      toast.error("Upload your Banner first");
+      DialogRef?.current?.click();
+    }
+    else {
     }
   };
   let backtoDefault=()=>{

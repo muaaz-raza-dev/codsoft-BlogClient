@@ -11,12 +11,12 @@ import { FC, ReactNode } from "react";
 const BlogOptions:FC<{children:ReactNode}> = ({children}) => {
   return (
     <DropdownMenu>
-    <DropdownMenuTrigger className="h-full overflow-hidden  focus-visible:ring-0 object-center md:py-1 max-md:py-3 focus-within:ring-0 outline-0 active:ring-0 ring-0">
+    <DropdownMenuTrigger className="h-full overflow-hidden  focus-visible:ring-0 items-end object-center md:py-1 max-md:py-3 focus-within:ring-0 outline-0 active:ring-0 ring-0">
  {children}
     </DropdownMenuTrigger>
     <DropdownMenuContent className="mx-2 z-[600]">
       <DropdownMenuItem className="cursor-pointer">
-        <button  className="flex gap-x-2 items-center">
+        <button  className="flex gap-x-2 items-end">
           <Trash/>
           Delete
         </button>

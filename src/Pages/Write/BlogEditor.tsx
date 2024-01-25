@@ -2,11 +2,9 @@ import { useAppDispatch, useAppSelector } from "@/app/ReduxHooks";
 import ReactQuill from "react-quill";
 import { useState, useEffect, useRef } from "react";
 import { WriteInsertion } from "@/app/Slices/WriteSlice";
-import { useDebouncedCallback } from "use-debounce";
 var toolbarOptions = [
   ["bold", "italic", "underline", "strike"], // toggled buttons
   ["blockquote", "code-block"],
-
   [{ header: 1 }, { header: 2 }], // custom button values
   [{ list: "ordered" }, { list: "bullet" }],
   [{ script: "sub" }, { script: "super" }], // superscript/subscript
@@ -23,9 +21,7 @@ const modules = {
 const BlogEditor = () => {
   const EditorRef: any = useRef(null);
   const [Content, setContent] = useState<string>("");
-  let debounce = useDebouncedCallback((data:string) => {
-  
-  }, 7500);
+ 
   let dispatch = useAppDispatch();
 let data=useAppSelector(state=>state.write)
   useEffect(() => {
@@ -35,7 +31,6 @@ let data=useAppSelector(state=>state.write)
         plainText: EditorRef.current.unprivilegedEditor.getText(),
       })
     );
-    debounce(Content);
   }, [Content]);
 
   return (
