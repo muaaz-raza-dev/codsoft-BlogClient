@@ -2,7 +2,19 @@ import {createSlice} from "@reduxjs/toolkit"
 import { IuserDetails } from "../Types/IuserDetails";
 import userInsertion from "../Reducers/userDetails/userDetailsReducer";
 export  const userDetailsState :IuserDetails = {
-    Info:{avatar:"",username:"",bio:"",_id:""},
+    Info:{    _id:"",
+    username:"",
+    avatar:"",
+    email:"",
+    Name:"",
+    bio:"",
+    followers:[],
+    following:[],
+    Posts:[],
+    saved:[],
+    liked:[],
+    interests:[],
+    registeredDate:""},
     Follower:[],
     Following:[],
     Posts:[],

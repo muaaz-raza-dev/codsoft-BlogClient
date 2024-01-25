@@ -14,7 +14,7 @@ const ProfileFile:FC = () => {
   let Params = useParams()
   let {isLoading,data }=useQuery({queryKey:[Params.id,"user"],
   queryFn:()=>FetchIndividualUser(Params?.id||""),onSuccess(data) {
-  dispatch(userDetailsInsertion({Info:{_id:data.payload._id,username:data.payload.username,avatar:data?.payload?.avatar,bio:data.payload.bio},isAdmin:data.payload._id===credits.Info._id ,Posts:data.payload.Posts, Follower:data.payload?.followers , Following:data?.payload.following
+  dispatch(userDetailsInsertion({Info:data.payload,isAdmin:data.payload._id===credits.Info._id ,Posts:data.payload.Posts, Follower:data.payload?.followers , Following:data?.payload.following
   }))
   },})  
   
