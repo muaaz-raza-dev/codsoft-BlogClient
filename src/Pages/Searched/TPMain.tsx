@@ -48,10 +48,15 @@ const TPMain = () => {
             endMessage={<h1 className="text-md font-bold py-6 text-center">You all caught up! Thanks for scrolling through Records; stay tuned for more, as your curiosity is our fuel!
             </h1>}
           >
-           {searchedState.Blogs.map(elm=><PostBox Follower={elm.FollowerOnly&&(credits.isLogined&& credits.Info.following.some(Elm=>Elm._id==elm._id)}data={elm}/>
-          </InfiniteScroll>:
-          <h1>No results</h1>
-          }
+            {
+              searchedState.Blogs.map(elm=><PostBox data={elm} Follower={elm.FollowerOnly&&(credits.isLogined&& credits.Info.following.some(Elm=>Elm._id==elm._id) )}/>)
+            }
+           {/* {  searchedState.Blogs.map(elm=><PostBox 
+           Follower={elm.FollowerOnly&&(credits.isLogined&& credits.Info.following.some(Elm=>Elm._id==elm._id) }  data={elm} />) }  */}
+           
+        </InfiniteScroll>:
+        <h1>No results</h1>
+           }
             </div>  
             </div>
             )
