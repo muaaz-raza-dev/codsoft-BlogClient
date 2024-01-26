@@ -41,6 +41,7 @@ timeToRead:string,
 topic:{title:string,_id:string},
 tags:string[],
 likes:number,
+FollowerOnly:boolean,
 Comments:IComment[],
 }
 export interface Ilanding{

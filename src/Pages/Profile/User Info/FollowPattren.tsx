@@ -1,3 +1,4 @@
+import { LightLoader } from "@/Essentials/Loader"
 import FollowFn from "@/Queryfunctions/Posts/FollowUnfollow"
 import { useAppDispatch, useAppSelector } from "@/app/ReduxHooks"
 import { CreditsInsertion } from "@/app/Slices/CredentialSlice"
@@ -11,7 +12,7 @@ const FollowPattren = () => {
     let dispatch=useAppDispatch()
     let {Info} =useAppSelector(state=>state.credits)
     let credits =useAppSelector(state=>state.credits)
-    const {mutate}=useMutation({mutationFn:()=>FollowFn(data.Info?._id)
+    const {mutate,isLoading}=useMutation({mutationFn:()=>FollowFn(data.Info?._id)
        ,mutationKey:[data.Info?._id,"save"] , onSuccess(resp) {
       if (resp.type=="follow") {
           toast.success(`You are following ${data.Info.username}`)
@@ -28,8 +29,8 @@ const FollowPattren = () => {
 
     
   return (
-    <div className='w-full h-full  ' onClick={()=>{CreditsValidator<typeof mutate,typeof dispatch>(credits,mutate,dispatch)}}>
-{(Info.following.some(elm=>elm._id==data.Info._id))? "Unfollow":"Follow"}
+    <div className='w-full h-full  ' onClick={()=>{CreditsValidator<typeof mutate,typeof dispatch>(credits,mutate,dispatch)}} >
+{!isLoading? (Info.following.some(elm=>elm._id==data.Info._id))? "Unfollow":"Follow" : <LightLoader/>}
     </div>
   )
 }

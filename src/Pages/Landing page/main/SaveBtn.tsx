@@ -6,7 +6,7 @@ import { Bookmark } from "lucide-react"
 import { toast } from "react-hot-toast"
 import { useMutation } from "react-query"
 
-const SaveBtn = ({_id}:{_id:string}) => {
+const SaveBtn = ({_id,size}:{_id:string,size?:number}) => {
     let dispatch=useAppDispatch()
     let {Info} =useAppSelector(state=>state.credits)
     let credits =useAppSelector(state=>state.credits)
@@ -20,7 +20,7 @@ const SaveBtn = ({_id}:{_id:string}) => {
     
   return (
 
-<Bookmark fill={Info.saved.length!==0? Info?.saved?.filter(elm=>elm?._id===_id).length!==0?"black":"transparent":"transparent"} className={`text-black max-md:w-6 hover:text-[var(--primary)] p-0.5 ${isLoading&&"animate-pulse"}  cursor-pointer`} onClick={()=>{CreditsValidator<typeof mutate,typeof dispatch>(credits,mutate,dispatch)}} />
+<Bookmark fill={isLoading?"black": Info.saved.length!==0? Info?.saved?.filter(elm=>elm?._id===_id).length!==0?"black":"transparent":"transparent"} className={`text-black max-md:w-6 hover:text-[var(--primary)] p-0.5 ${isLoading&&"animate-pulse "}  cursor-pointer`} size={size} onClick={()=>{CreditsValidator<typeof mutate,typeof dispatch>(credits,mutate,dispatch)}} />
       
 
   )

@@ -10,11 +10,11 @@ interface IwriteAction {
   timeToRead?: string;
   tags?: string[];
   plainText?:string
+  FollowerOnly?:boolean
 }
 
 const writeInsertion = (state: Iwrite, action: PayloadAction<IwriteAction>) => {
   let { payload } = action;
-
   if (payload.Banner) state.Banner = payload.Banner;
   if (payload.title      !==undefined) state.title = payload.title;
   if (payload.subtitile  !==undefined) state.subtitile = payload.subtitile;
@@ -24,6 +24,8 @@ const writeInsertion = (state: Iwrite, action: PayloadAction<IwriteAction>) => {
   if (payload.timeToRead !==undefined) state.timeToRead = payload.timeToRead;
   if (payload.tags !==undefined) state.tags = payload.tags;
   if (payload.plainText !==undefined) state.plainText = payload.plainText;
+  if (payload.FollowerOnly !==undefined) state.FollowerOnly = payload.FollowerOnly;
+  
 };
 
 export default writeInsertion;

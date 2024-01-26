@@ -12,6 +12,7 @@ export interface Iinfo{
     following:Iinfo[],
     Posts:Iblog[],
     saved:Iblog[],
+    anonymous:Iblog[],
     interests:Itopic[],
     liked:string[],
     registeredDate:string;

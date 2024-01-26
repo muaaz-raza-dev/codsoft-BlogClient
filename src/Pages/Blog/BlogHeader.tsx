@@ -61,14 +61,10 @@ const BlogHeader = ({data}:(Iblog|any)) => {
           </div>
           <div className="flex gap-x-6">
             <SaveBtn _id={data._id}/>
-            {/* <Bookmark
-              size={20}
-              className="text-[#6B6B6B] hover:text-black transition cursor-pointer"
-            /> */}
             <div className="" onClick={() => Webshare(data?.title,location.href,data?.subTitle)}>
               <LucideShare
                 size={20}
-                className="text-[#6B6B6B] hover:text-black transition cursor-pointer"
+                className="text-[#6B6B6B] max-md:w-6 hover:text-[var(--primary)] hover:text-black transition cursor-pointer"
               />
             </div>
           </div>

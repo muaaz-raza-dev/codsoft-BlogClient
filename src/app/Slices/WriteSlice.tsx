@@ -11,6 +11,7 @@ export  const Write :Iwrite = {
     timeToRead:"",
     topic:"",
     PostType:"",
+    FollowerOnly:false,
     plainText:""
 }
 export const WriteSlice = createSlice({

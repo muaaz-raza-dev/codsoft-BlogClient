@@ -19,7 +19,7 @@ export  const userDetailsState :IuserDetails = {
     Following:[],
     Posts:[],
     isAdmin:false,
-    tabs:["Posts","Saved"],
+    tabs:["Posts","Saved","Anonymous"],
     selectedTab:"Posts"
 }
 export const userDetails = createSlice({

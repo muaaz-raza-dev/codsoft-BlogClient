@@ -13,6 +13,7 @@ export  const Credits :Icredits = {
       following:[],
       Posts:[],
       saved:[],
+      anonymous:[],
       liked:[],
       interests:[],
       registeredDate:"",

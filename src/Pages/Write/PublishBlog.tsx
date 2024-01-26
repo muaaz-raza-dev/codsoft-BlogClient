@@ -28,10 +28,10 @@ const PublishBlog = () => {
   let dispatch=useAppDispatch()
   let credits = useAppSelector((state) => state.credits);
   let {Blogs} = useAppSelector((state) => state.landing);
-  let { mainContent, title, subtitile, Banner, topic ,timeToRead } = writeState;
+  let { mainContent, title, subtitile, Banner, topic ,timeToRead,FollowerOnly } = writeState;
   let navigate=useNavigate()
   let {mutate ,isLoading } = useMutation({mutationKey:["upload",credits.Info._id] , mutationFn:(Anonymous:boolean)=>{
-      return UploadFn({author:credits.Info._id,anonymous:Anonymous,content:mainContent, title,subTitle: subtitile,banner: Banner,timeToRead, topic}) 
+      return UploadFn({author:credits.Info._id,anonymous:Anonymous,content:mainContent, title,subTitle: subtitile,banner: Banner,timeToRead, topic,FollowerOnly}) 
   } ,onSuccess(data) {
    let{payload}=data
    let Input;
@@ -54,16 +54,16 @@ onError(){
 });
   let DialogRef = useRef<any>(null);
   let validateInputs = () => {
-    if (mainContent.length == 0 || title.length == 0 || topic.length == 0) {
-      toast.error("Main Content, Title and Topic can't be empty ");
-      DialogRef?.current?.click();
-    }
-    else if(Banner.length==0){
-      toast.error("Upload your Banner first");
-      DialogRef?.current?.click();
-    }
-    else {
-    }
+    // if (mainContent.length == 0 || title.length == 0 || topic.length == 0) {
+    //   toast.error("Main Content, Title and Topic can't be empty ");
+    //   DialogRef?.current?.click();
+    // }
+    // else if(Banner.length==0){
+    //   toast.error("Upload your Banner first");
+    //   DialogRef?.current?.click();
+    // }
+    // else {
+    // }
   };
   let backtoDefault=()=>{
     dispatch(WriteInsertion({mainContent:"",title:"",timeToRead:"" ,Banner:"",subtitile:"",topic:""}))
@@ -83,21 +83,21 @@ onError(){
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>sumbit your content </DialogTitle>
+            <DialogTitle>sumbit your post </DialogTitle>
             <DialogDescription>
-              <div className="flex flex-wrap w-full my-4 items-center gap-3">
+              <div className={`flex flex-wrap w-full my-4 items-center gap-3 ${writeState.FollowerOnly&&"grayscale  cursor-default "} `}>
                 <button
-                  onClick={() =>{ 
-                    
-                  mutate(true)
-                 
-                  }}
-                  className="uppercase block w-full p-1 text-lg rounded-full bg-[var(--primary)] hover:bg-[black] text-white transition-colors focus:outline-none"
+                  disabled={writeState.FollowerOnly}
+                  onClick={()=>{
+                    mutate(true)
+                   }}
+                  className={`uppercase block w-full p-1 text-lg rounded-full bg-[var(--primary)]hover:bg-[black] text-white transition-colors focus:outline-none ${writeState.FollowerOnly&&"grayscale  cursor-not-allowed "} `}
                 >
                   <TooltipProvider>
                     <Tooltip>
-                      <TooltipTrigger>{!isLoading?"👽 Post Anonymously":<LightLoader/>} </TooltipTrigger>
-                      <TooltipContent className=" ">
+                      <TooltipTrigger className={`${writeState.FollowerOnly&&"grayscale  cursor-not-allowed "}`}>{!isLoading?"👽 Post Anonymously":<LightLoader/>} 
+                      </TooltipTrigger>
+                      <TooltipContent className="" >
                         <p>
                           It will hide all of your user information, not reaveal
                           the yours ID

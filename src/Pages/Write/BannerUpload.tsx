@@ -20,16 +20,19 @@ let fileRef =useRef()
 <div className={`${!ImageURI.sample&&"bg-gray-500"} border-2 p-2 object-contain w-full flex items-center justify-center text-white  `}>
             {
               !ImageURI.sample?
-              " Your Image will be showing here."
+              " Your Banner will be showing here."
               :
+              <>
               <img src={ImageURI.sample} alt="" className="w-full"  />
+              <video src={ImageURI.sample} autoPlay controls loop/>
+              </>
             }
         </div>
         </div>
-<div className="max-md:w-full p-2 overflow-hidden">
-<FileUploader className={"w-full"}  multiple={false} ref={fileRef} label="Upload your banner" file={true} handleChange={(file:Blob)=>{
+<div className="max-md:w-full  center p-2 overflow-hidden">
+<FileUploader className={"!w-[34px] !h-8"}  multiple={false} ref={fileRef} label="Upload your banner" file={true} handleChange={(file:Blob)=>{
   setImageURI({sample:URL.createObjectURL(file),blob:file})
-}} types={["PNG","JPG","JPEG"]}  />
+}} types={["PNG","JPG","JPEG","mp3","mp4"]} maxSize={10485760}  />
 </div>
 <div className="flex gap-x-4">
 {

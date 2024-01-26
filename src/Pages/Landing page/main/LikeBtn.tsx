@@ -40,7 +40,7 @@ const LikeBtn:FC<Ilikebtn> = ({_id,size}) => {
     
   return (
     <button onClick={()=>CreditsValidator<typeof mutate,typeof dispatch>(Info,mutate,dispatch)} className='active:scale-110 transition-transform'> 
-    <Heart size={size} fill={ isLoading?"#23232379": Info.Info.liked.includes(_id)? "#FF3040":"transparent"}   className={`${"text-black"} ${isLoading&&"animate-pulse"}  hover:text-[var(--primary)] p-0.5 cursor-pointer max-md:w-6`} />
+    <Heart size={size} fill={ isLoading?"#FF3040": Info.Info.liked.includes(_id)? "#FF3040":"transparent"}   className={`text-black   hover:text-[var(--primary)] p-0.5 cursor-pointer max-md:w-6`} />
     </button>
   )
 }
