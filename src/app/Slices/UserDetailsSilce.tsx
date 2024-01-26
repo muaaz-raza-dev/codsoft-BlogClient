@@ -11,6 +11,7 @@ export  const userDetailsState :IuserDetails = {
     followers:[],
     following:[],
     Posts:[],
+    anonymous:[],
     saved:[],
     liked:[],
     interests:[],

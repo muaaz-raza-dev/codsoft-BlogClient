@@ -149,6 +149,7 @@ let DeleteDialog = ()=>{
       Posts:[],
       saved:[],
       liked:[],
+      anonymous:[],
       interests:[],
       registeredDate:"",
     }}))

@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/app/ReduxHooks"
 import { userDetailsInsertion } from "@/app/Slices/UserDetailsSilce"
-import { Bookmark, Grid2X2, User, UserRoundX } from "lucide-react"
+import { Bookmark, Grid2X2, UserRoundX } from "lucide-react"
 import { FC } from "react"
 
 const UPostHeader = () => {

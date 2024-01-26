@@ -30,6 +30,7 @@ Edit Profile
               Posts:[],
               saved:[],
               liked:[],
+              anonymous:[],
               interests:[],
               registeredDate:"",
               }  }))

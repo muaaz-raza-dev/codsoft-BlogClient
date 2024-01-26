@@ -76,6 +76,7 @@ const LoginedOptions = () => {
               Posts:[],
               saved:[],
               liked:[],
+              anonymous:[],
               interests:[],
               registeredDate:"",
               }  }))
